@@ -3,40 +3,150 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Echoes of Eden: Privacy Policy</title>
+<title>Echoes of Eden: Bible stories you live with your hands, in VR</title>
+<meta name="description" content="Part the Red Sea. Face Goliath. Walk on water. Echoes of Eden is a seated, hands-only VR game for Meta Quest: nine stories of the Bible, lived with nothing but your own two hands.">
+<meta property="og:title" content="Echoes of Eden">
+<meta property="og:description" content="Nine Bible stories, lived in seated VR with nothing but your hands. For Meta Quest 3 and 3S.">
+<meta property="og:image" content="https://kyle789xbl.github.io/echoes-of-eden/img/cover.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.png">
 <style>
-  body { font-family: Georgia, "Times New Roman", serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #2b2418; background: #fbf7ee; }
-  h1 { font-size: 2em; margin-bottom: 0.2em; }
-  h2 { font-size: 1.25em; margin-top: 1.8em; }
-  .date { color: #6b5f4b; }
-  a { color: #7a5a14; }
+  @font-face { font-family: "Cinzel Decorative"; src: url("fonts/CinzelDecorative-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+  @font-face { font-family: "Cinzel"; src: url("fonts/Cinzel.ttf") format("truetype"); font-display: swap; }
+  :root { --ink: #f3e8cf; --dim: #c9bb98; --gold: #e2b866; --deep: #0d120a; --panel: #151c10; --line: #2c3520; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--deep); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.65; }
+  a { color: var(--gold); }
+  h1, h2, h3 { font-family: "Cinzel", Georgia, serif; font-weight: 400; letter-spacing: .04em; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* hero */
+  .hero { position: relative; min-height: 92vh; display: flex; align-items: flex-end; background: #000 url("img/hero.jpg") center 35% / cover no-repeat; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5,8,3,.15) 0%, rgba(5,8,3,.1) 45%, rgba(13,18,10,.92) 85%, var(--deep) 100%); }
+  .hero .wrap { position: relative; z-index: 1; padding-bottom: 8vh; text-align: center; }
+  .title { font-family: "Cinzel Decorative", "Cinzel", Georgia, serif; font-weight: 700; font-size: clamp(2.6rem, 8vw, 6rem); line-height: 1.05; margin: 0; color: #fff4dc; text-shadow: 0 0 2px #2a1c08, 0 4px 18px rgba(0,0,0,.85), 0 0 40px rgba(255,190,90,.25); }
+  .tag { font-size: clamp(1.05rem, 2.2vw, 1.35rem); color: var(--ink); max-width: 760px; margin: 18px auto 30px; text-shadow: 0 2px 10px rgba(0,0,0,.9); }
+  .btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 13px 26px; border-radius: 999px; text-decoration: none; font-family: "Cinzel", Georgia, serif; letter-spacing: .06em; font-size: .95rem; }
+  .btn.primary { background: linear-gradient(#f0cf86, #c9973f); color: #1d1405; box-shadow: 0 6px 24px rgba(226,184,102,.35); }
+  .btn.ghost { border: 1px solid rgba(243,232,207,.55); color: var(--ink); background: rgba(10,14,7,.45); }
+  .badges { margin-top: 22px; color: var(--dim); font-size: .92rem; letter-spacing: .05em; }
+
+  section { padding: 80px 0; border-top: 1px solid var(--line); }
+  section h2 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); text-align: center; margin: 0 0 10px; color: #fff1d2; }
+  .lead { text-align: center; color: var(--dim); max-width: 720px; margin: 0 auto 44px; font-size: 1.08rem; }
+
+  /* trailer */
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.6); border: 1px solid var(--line); }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  /* pillars */
+  .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+  .pillar { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 26px; }
+  .pillar h3 { margin: 0 0 8px; color: var(--gold); font-size: 1.15rem; }
+  .pillar p { margin: 0; color: var(--dim); }
+
+  /* feature with illustration */
+  .feature { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+  .feature img { width: 100%; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 16px 50px rgba(0,0,0,.55); }
+  .feature h2 { text-align: left; }
+  .feature p { color: var(--dim); font-size: 1.05rem; }
+  @media (max-width: 820px) { .feature { grid-template-columns: 1fr; } }
+
+  /* chapters */
+  .chapters { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+  .ch { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+  .ch img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+  .ch div { padding: 18px 20px 22px; }
+  .ch h3 { margin: 0; font-size: 1.12rem; color: #fff1d2; }
+  .ch .ref { color: var(--gold); font-size: .85rem; letter-spacing: .05em; margin: 2px 0 8px; }
+  .ch p { margin: 0; color: var(--dim); font-size: .98rem; }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0 60px; color: var(--dim); font-size: .9rem; text-align: center; }
+  footer .links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+  footer img { width: 64px; height: 64px; border-radius: 12px; display: block; margin: 0 auto 14px; }
+  .small { font-size: .82rem; opacity: .8; max-width: 720px; margin: 10px auto 0; }
 </style>
 </head>
 <body>
-<h1>Echoes of Eden: Privacy Policy</h1>
-<p class="date">Last updated: 17 November 2026</p>
 
-<p>Echoes of Eden ("the app") is a virtual reality game for Meta Quest, made by KyleTheUnityDev ("I", "me").</p>
+<header class="hero">
+  <div class="wrap">
+    <h1 class="title">Echoes of Eden</h1>
+    <p class="tag">Part the Red Sea. Face Goliath. Walk on water. Nine stories of the Bible, lived in seated VR with nothing but your own two hands.</p>
+    <div class="btns">
+      <a class="btn primary" href="#trailer">Watch the trailer</a>
+      <a class="btn ghost" href="#chapters">See the chapters</a>
+    </div>
+    <div class="badges">Meta Quest 3 &amp; 3S &nbsp;·&nbsp; Hand tracking only &nbsp;·&nbsp; Played seated &nbsp;·&nbsp; ESV scripture</div>
+  </div>
+</header>
 
-<h2>What the app collects</h2>
-<p>The app does not collect, store, sell or share any personal information. It has no accounts, no sign-in, no analytics, no advertising and no online features. It does not need an internet connection to play.</p>
+<section id="trailer">
+  <div class="wrap">
+    <h2>The trailer</h2>
+    <p class="lead">Real footage of the game, played with hand tracking alone. No controllers.</p>
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/dLpPcDjWP-M" title="Echoes of Eden trailer" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
 
-<h2>Hand tracking</h2>
-<p>The app is played with your hands. Hand tracking is provided by your Meta Quest headset. The positions of your hands are used on the headset, while you play, so you can interact with the game. The app does not record them, store them or send them to me or to anyone else.</p>
+<section>
+  <div class="wrap">
+    <h2>Don't watch the story. Live it.</h2>
+    <p class="lead">Most Bible experiences ask you to watch. Echoes of Eden asks you to act, and every gesture means what it would mean to someone standing in the story.</p>
+    <div class="pillars">
+      <div class="pillar"><h3>Nothing but your hands</h3><p>No controllers, no buttons, no menus to learn. Clap, grab, point, throw, whirl and lift, and the world answers.</p></div>
+      <div class="pillar"><h3>Made to be played sitting</h3><p>Every chapter is played seated. When the story needs you to face somewhere new, the world turns gently around you.</p></div>
+      <div class="pillar"><h3>Every word is scripture</h3><p>Every line is the English Standard Version, spoken and captioned word for word.</p></div>
+      <div class="pillar"><h3>Help when you need it</h3><p>Glowing marks show where to reach, a see-through hand shows the move if you're stuck, and a hint waits on your wrist.</p></div>
+    </div>
+  </div>
+</section>
 
-<h2>Microphone and other device permissions</h2>
-<p>The app does not use your microphone, camera or location. Some permissions listed for the app come from Meta and Unity software libraries it is built with. The app itself does not use them to collect any information about you.</p>
+<section>
+  <div class="wrap feature">
+    <img id="handsimg" src="img/hands_sea.jpg" alt="Two glowing hands raised before a sea parting into walls of water" onerror="this.src='img/redsea.jpg'">
+    <div>
+      <h2>Stretch out your hand over the sea</h2>
+      <p>Ride with Pharaoh's chariots down to the shore. Rise into the sky as the LORD and steer the whirlwind against the host with one outstretched hand. Then come down as Moses, lift the staff, and walk between the walls of the sea while they stand on either side of you.</p>
+    </div>
+  </div>
+</section>
 
-<h2>Data handled by Meta</h2>
-<p>Your use of your Meta Quest headset and the Meta Horizon Store is covered by Meta's own privacy policy: <a href="https://www.meta.com/legal/privacy-policy/">https://www.meta.com/legal/privacy-policy/</a>.</p>
+<section id="chapters">
+  <div class="wrap">
+    <h2>Nine chapters</h2>
+    <p class="lead">Choose a chapter by looking at its shrine and holding a hand in its light.</p>
+    <div class="chapters">
+      <article class="ch"><img src="img/creation.jpg" alt="The earth and moon in space" loading="lazy"><div><h3>In the Beginning</h3><p class="ref">Genesis 1–2</p><p>Clap, and light leaves your hands to make the world, from the firmament to the stars, the beasts and the first man.</p></div></article>
+      <article class="ch"><img src="img/cain.jpg" alt="Cain at his altar among his sheep" loading="lazy"><div><h3>My Brother's Keeper</h3><p class="ref">Genesis 4</p><p>Stand at Cain's altar and watch fire fall on your brother's offering, and not on yours.</p></div></article>
+      <article class="ch"><img src="img/redsea.jpg" alt="The Red Sea shore beneath cliffs" loading="lazy"><div><h3>The Sea Divided</h3><p class="ref">Exodus 13–15</p><p>Take the reins of a galloping chariot, steer the whirlwind from the sky, then part the sea as Moses.</p></div></article>
+      <article class="ch"><img src="img/goliath.jpg" alt="Goliath in armour across the valley, a hand raised" loading="lazy"><div><h3>The Giant</h3><p class="ref">1 Samuel 17</p><p>Whirl a real sling over your head, let go, and a three-metre champion falls.</p></div></article>
+      <article class="ch"><img src="img/sodom.jpg" alt="Burning stone falling on the cities of the plain" loading="lazy"><div><h3>Fire from Heaven</h3><p class="ref">Genesis 18–19</p><p>Close your hand and burning stone comes down out of the sky into it. Throw it at the cities of the plain.</p></div></article>
+      <article class="ch"><img src="img/samson.jpg" alt="Samson holding the jawbone above the Philistine camp" loading="lazy"><div><h3>The Jawbone</h3><p class="ref">Judges 15</p><p>As Samson, punch, grab and throw until a thousand Philistines lie in heaps.</p></div></article>
+      <article class="ch"><img src="img/galilee.jpg" alt="The disciples in a fishing boat on a stormy sea" loading="lazy"><div><h3>Upon the Waters</h3><p class="ref">Matthew 14</p><p>Step out of the boat as Peter, sink when you look at the wind, then reach down as Jesus and lift him out.</p></div></article>
+      <article class="ch"><img src="img/cross.jpg" alt="Roman soldiers before three crosses on Golgotha" loading="lazy"><div><h3>At the Cross</h3><p class="ref">The Gospels</p><p>Nothing moves unless you lift the beam. You fall, and you must lift it again.</p></div></article>
+      <article class="ch"><img src="img/throne.jpg" alt="A shining figure in a hall among the stars" loading="lazy"><div><h3>The Throne Room</h3><p class="ref">A quiet hall</p><p>Pull a star from the sky and hear the verse inside it.</p></div></article>
+    </div>
+  </div>
+</section>
 
-<h2>Children</h2>
-<p>The app does not knowingly collect information from anyone, including children.</p>
+<footer>
+  <div class="wrap">
+    <img src="img/icon.png" alt="Echoes of Eden icon">
+    <div class="links">
+      <a href="#trailer">Trailer</a>
+      <a href="https://devpost.com/software/echoes-of-eden-16byzo">Devpost</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="https://github.com/kyle789xbl/echoes-of-eden/issues">Contact</a>
+    </div>
+    <div>Echoes of Eden, made by KyleTheUnityDev. For Meta Quest 3 and 3S.</div>
+    <p class="small">Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Titles set in Cinzel and Cinzel Decorative (SIL Open Font License, see <a href="fonts/OFL.txt">fonts/OFL.txt</a>).</p>
+  </div>
+</footer>
 
-<h2>Changes</h2>
-<p>If this policy changes, the updated version will be posted on this page with a new date.</p>
-
-<h2>Contact</h2>
-<p>For questions about this policy, please open an issue at <a href="https://github.com/kyle789xbl/echoes-of-eden-privacy/issues">github.com/kyle789xbl/echoes-of-eden-privacy/issues</a>.</p>
 </body>
 </html>
